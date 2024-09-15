@@ -1,4 +1,6 @@
-import {home, calender, location, compass, setting, notification, user} from '../assets/icons/index';
+import {home, calender, location, compass, setting, notification, user, climate, puneBg} from '../assets/icons/index';
+import { useDetailsContext } from '../context';
+
 
 
 export const navMenu = [
@@ -36,6 +38,17 @@ export const titleMenu = [
     }
 ]
 
+export const climateIcon = [
+  {
+    imgUrl: climate,
+  },
+]
+
+export const bgImg = [
+  {
+    imgUrl: puneBg,
+  }
+]
 
 export interface WeatherInfo {
     coord: {
@@ -83,7 +96,7 @@ export interface WeatherInfo {
   }
 
 
-export interface Forecast {
+export interface ForecastInfo {
   cod: string;
   message: number;
   cnt: number;
@@ -135,3 +148,16 @@ export interface Forecast {
     sunset: number;
   };
 }
+
+
+export interface detailsInfo {
+  weather: WeatherInfo | undefined;
+  forecast: ForecastInfo | undefined;
+}
+
+export const Highlights = [
+  {
+    label: "Precipitation",
+    // value: details.forecast?.list[0].pop,
+  }
+]
