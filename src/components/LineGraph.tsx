@@ -28,10 +28,10 @@ const LineGraph = () => {
     labels[i] = currenthour+i*3;
   }
 
-  //getting data from 
   let linedata: number[] = []
   for (let i=0; i<8; i++) {
-    linedata[i]
+    if(details.forecast !== undefined)
+    linedata[i] = details.forecast?.list[i].main.temp;
   }
 
   const data = {
@@ -39,14 +39,14 @@ const LineGraph = () => {
     datasets: [
         {
             labels: 'my first Datasets',
-            data: []
+            data: linedata
         }
     ]
   }
 
   return (
     <>
-
+      <Line data={data}></Line>
     </>
   )
 };
