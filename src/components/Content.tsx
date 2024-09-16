@@ -1,6 +1,7 @@
 import { bgImg, climateIcon, detailsInfo } from "../constants";
 import { useDetailsContext } from "../context";
 import { functions } from "../functions";
+import BarGraph from "./BarGraph";
 import LineGraph from "./LineGraph";
 
 const Content = () => {
@@ -71,8 +72,8 @@ const Content = () => {
           <LineGraph/>
         </div>
       </div>
-      <div className="bg-pink-400 h-40 w-40">
-
+      <div className="bg-pink-400 flex-1">
+        <BarGraph/>
       </div>
     </div>
   )
