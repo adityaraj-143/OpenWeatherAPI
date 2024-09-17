@@ -153,6 +153,7 @@ export interface ForecastInfo {
 export interface detailsInfo {
   weather: WeatherInfo | undefined;
   forecast: ForecastInfo | undefined;
+  forecastDay: forecastDayInfo | undefined;
 }
 
 export const Highlights = [
@@ -161,3 +162,24 @@ export const Highlights = [
     // value: details.forecast?.list[0].pop,
   }
 ]
+
+export interface forecastDayInfo {
+  latitude: number;
+  longitude: number;
+  generationtime_ms: number;
+  utc_offset_seconds: number;
+  timezone: string;
+  timezone_abbreviation: string;
+  elevation: number;
+  daily_units: {
+    time: string;
+    temperature_2m_max: string;
+    temperature_2m_min: string;
+  };
+  daily: {
+    time: string[];
+    temperature_2m_max: number[];
+    temperature_2m_min: number[];
+    weather_code: number[];
+  };
+}

@@ -3,20 +3,23 @@ import Axios from 'axios'
 import Nav from './sections/Nav';
 import Main from './sections/Main';
 import { useEffect, useState} from 'react';
-import { ForecastInfo, WeatherInfo } from './constants';
+import { forecastDayInfo, ForecastInfo, WeatherInfo } from './constants';
 import { Appcontext } from './context';
 
 function App() {
 
   const [weather, setweather] = useState<WeatherInfo>();
   const [forecast, setforecast] = useState<ForecastInfo>();
+  const [forecastDay, setforecastDay] = useState<forecastDayInfo>()
 
   const getPost = async () => {
     try {
       const weatherObj = await Axios.post("https://api.openweathermap.org/data/2.5/weather?lat=18.5204&lon=73.8567&units=metric&appid=601708278b44b430e193762b36b11037");
       const forecastObj = await Axios.post("https://api.openweathermap.org/data/2.5/forecast?lat=18.5204&lon=73.8567&cnt=8&units=metric&appid=601708278b44b430e193762b36b11037")
+      const forecastDay = await Axios.get("https://api.open-meteo.com/v1/forecast?latitude=18.520&longitude=73.8567&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto")
       setweather(weatherObj.data);
       setforecast(forecastObj.data);
+      setforecastDay(forecastDay.data)
     } catch (error) {
       console.log(`message: ${error}`);
     }
@@ -25,6 +28,7 @@ function App() {
   const details = {
     weather,
     forecast,
+    forecastDay,
   }
 
   useEffect(() => {
@@ -33,6 +37,7 @@ function App() {
 
   console.log(weather);
   console.log(forecast);
+  console.log(forecastDay);
   return (
     <Appcontext.Provider value={details}>
       <div className="flex">
