@@ -1,18 +1,18 @@
 import { bgImg, climateIcon, detailsInfo } from "../constants";
 import { useDetailsContext } from "../context";
-import { functions } from "../functions";
+import { getDetails } from "../functions";
 import BarGraph from "./BarGraph";
 import Forecast from "./Forecast";
+import Highlights from "./highlights";
 import LineGraph from "./LineGraph";
 
 const Content = () => {
   const details = useDetailsContext();
-  const date = new Date();
-  const [days, daylist, month, riseTime, setTime] = functions(details, date);
+  const { days, month, hours, minutes, date } = getDetails(details);
 
   return (
     <div className="flex">
-      <div className="bg-green-500 p-5 w-[1000px]">
+      <div className="flex flex-col p-5 w-[1000px]">
         <div className="flex">
           <div className="left-0 relative">
             <h1 className=" text-3xl pt-4 pl-8 absolute">
@@ -33,17 +33,17 @@ const Content = () => {
             </div>
           </div>
           <div className="w-30 my-auto ml-14  ">
-            <div className="p-5 h-28 pt-8 bg-green-300">
+            <div className="p-5 h-28 pt-8">
               <p>
                 {days[0]}, {date.getDate()}
                 <sup>th</sup> {month}
               </p>
               <p>
-                {date.getHours()}: {date.getMinutes()}
+                {hours}: {minutes}
               </p>
               <small></small>
             </div>
-            <div className="p-5 pt-8 h-28 bg-green-300 mt-16">
+            <div className="p-5 pt-8 h-28 mt-16">
               <p>
                 Feels like: {details.weather?.main.feels_like}°<sup>C</sup>
               </p>
@@ -51,44 +51,12 @@ const Content = () => {
             </div>
           </div>
         </div>
-        <div>
-          <h2>Today's Highlight</h2>
-          <div className="flex gap-14">
-            <div className="bg-white w-32 h-20 rounded-xl border-slate-400 border-2">
-              <small className="text-start px-2">Precipitation</small>
-              <p className="text-center pt-3">
-                {details.forecast && 100 * details.forecast?.list[0].pop}%
-              </p>
-            </div>
-            <div className="bg-white w-32 h-20 rounded-xl border-slate-400 border-2">
-              <small className="text-start px-2">Humidity</small>
-              <p className="text-center pt-3">
-                {details.weather && details.weather.main.humidity}%
-              </p>
-            </div>
-            <div className="bg-white w-32 h-20 rounded-xl border-slate-400 border-2">
-              <small className="text-start px-2">Wind</small>
-              <p className="text-center pt-3">
-                {details.weather &&
-                  (3.6 * details.weather?.wind.speed).toFixed(2)}
-                km/h
-              </p>
-            </div>
-            <div className="bg-white w-32 h-20 rounded-xl border-slate-400 border-2">
-              <small className="text-start px-2">Sunrise</small>
-              <p className="text-center pt-3">{riseTime} AM</p>
-            </div>
-            <div className="bg-white w-32 h-20 rounded-xl border-slate-400 border-2">
-              <small className="text-start px-2">Sunset</small>
-              <p className="text-center pt-3">{setTime} PM</p>
-            </div>
-          </div>
-        </div>
-        <div>
+        <Highlights />
+        <div className="flex-1 ">
           <LineGraph />
         </div>
       </div>
-      <div className="bg-pink-400 flex-1">
+      <div className="flex-1">
         <BarGraph />
         <Forecast />
       </div>

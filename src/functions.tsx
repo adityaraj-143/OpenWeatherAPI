@@ -60,11 +60,16 @@ const descriptions = [
   "Thunderstorm with heavy hail",
 ];
 
-export const functions = (details: detailsInfo, date: Date) => {
+export const getDetails = (details: detailsInfo) => {
+  const date = new Date()
   const days = dayList.slice(date.getDay());
   const month = monthList[date.getMonth()];
   let riseTime: string = "";
   let setTime: string = "";
+  let hours = "0" + date.getHours().toString();
+  hours = hours.substring(hours.length - 2)
+  let minutes = "0" + date.getMinutes().toString();
+  minutes = minutes.substring(minutes.length - 2);
 
   if (
     details.weather?.sys.sunrise !== undefined &&
@@ -80,11 +85,11 @@ export const functions = (details: detailsInfo, date: Date) => {
     setTime = setHour + ": " + setMinutes.substring(riseMinutes.length - 2);
   }
 
-  return [days, month, riseTime, setTime];
+  return { days, month, riseTime, setTime, hours, minutes, date };
 };
 
 export function weather(code: number): string {
-    const index = codeslist.indexOf(code)
-    const weatherDesc = descriptions[index];
-    return weatherDesc;
-};
+  const index = codeslist.indexOf(code);
+  const weatherDesc = descriptions[index];
+  return weatherDesc;
+}

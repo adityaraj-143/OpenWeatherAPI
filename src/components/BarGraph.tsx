@@ -1,59 +1,47 @@
-import {Bar } from 'react-chartjs-2'
+import { Bar } from "react-chartjs-2";
 import {
-    Chart as ChartJS,
-    BarElement,
-    CategoryScale,
-    LinearScale,
-    Tooltip,
-    Legend
-} from 'chart.js'
-import { useDetailsContext } from '../context';
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+} from "chart.js";
+import { useDetailsContext } from "../context";
 
-ChartJS.register(
-    BarElement,
-    CategoryScale,
-    LinearScale,
-    Tooltip,
-    Legend
-)
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip);
 
 const BarGraph = () => {
+  const details = useDetailsContext();
 
-    const details = useDetailsContext();
-    let currenthour = 0
-    if (details.forecast !== undefined) {
-      currenthour = new Date(details.forecast?.list[0].dt_txt).getHours();
-      currenthour = currenthour%12;
-      console.log(currenthour)
-    }
-    let labels: number[] = [];
-    for (let i=0; i<8; i++) {
-      labels[i] = currenthour+i*3;
-    }
+  let labels: string[] = [
+    "0AM",
+    "3AM",
+    "6AM",
+    "9AM",
+    "12PM",
+    "3PM",
+    "6PM",
+    "9PM",
+  ];
 
-    let Bardata: number[] = []
-    for (let i=0; i<8; i++) {
-      if(details.forecast !== undefined)
-      Bardata[i] = 100 * details.forecast?.list[i].pop;
-    }
+  let Bardata: number[] = [];
+  for (let i = 0; i < 8; i++) {
+    if (details.forecast !== undefined)
+      Bardata[i] =
+        details.forecast?.hourly.precipitation_probability[i * 3];
+  }
 
-    const data = {
-        labels: labels,
-        datasets: [
-            {
-                
-                labels: "my first dataset",
-                data: Bardata
-            }
-        ]
-    }
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        labels: "my first dataset",
+        data: Bardata,
+      },
+    ],
+  };
 
+  return <Bar data={data} options={{ indexAxis: "y" }}></Bar>;
+};
 
-  return (
-    <Bar data={data} options={{indexAxis: 'y'}} >
-      
-    </Bar>
-  )
-}
-
-export default BarGraph
+export default BarGraph;
