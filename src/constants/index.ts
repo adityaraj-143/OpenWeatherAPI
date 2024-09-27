@@ -124,7 +124,12 @@ export interface ForecastInfo {
   };
 }
 
-
+export interface dailyinfo {
+  day: string;
+  code: number;
+  tempMin: number;
+  tempMax: number;
+}
 
 export interface detailsInfo {
   weather: WeatherInfo | undefined;

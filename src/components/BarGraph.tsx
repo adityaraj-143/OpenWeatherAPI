@@ -27,8 +27,7 @@ const BarGraph = () => {
   let Bardata: number[] = [];
   for (let i = 0; i < 8; i++) {
     if (details.forecast !== undefined)
-      Bardata[i] =
-        details.forecast?.hourly.precipitation_probability[i * 3];
+      Bardata[i] = details.forecast?.hourly.precipitation_probability[i * 3];
   }
 
   const data = {
@@ -41,7 +40,11 @@ const BarGraph = () => {
     ],
   };
 
-  return <Bar data={data} options={{ indexAxis: "y" }}></Bar>;
+  return (
+    <div className=" px-6 py-4 h-[429px] rounded-xl backdrop-blur-md bg-[rgba(25,255,255,0.2)] border-2 border-[rgba(255,255,255,0.18)]">
+      <Bar data={data} options={{ indexAxis: "y" }}></Bar>
+    </div>
+  );
 };
 
 export default BarGraph;

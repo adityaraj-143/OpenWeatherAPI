@@ -14,7 +14,7 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  ChartDataLabels,
+  ChartDataLabels
 );
 
 const LineGraph = () => {
@@ -34,7 +34,7 @@ const LineGraph = () => {
   let linedata: number[] = [];
   for (let i = 0; i < 8; i++) {
     if (details.forecast !== undefined)
-      linedata[i] = details.forecast?.hourly.temperature_2m[i*3];
+      linedata[i] = details.forecast?.hourly.temperature_2m[i * 3];
   }
 
   const data = {
@@ -43,37 +43,47 @@ const LineGraph = () => {
       {
         labels: "my first Datasets",
         data: linedata,
+        fill: true,
+        tension: 0.1,
+        pointRadius: 3,
+        fillColor: "rgba"
+
       },
     ],
   };
 
   return (
-    <Line
-      data={data}
-      height={400}
-      width={960}
-      options={{
-        maintainAspectRatio: false,
-        responsive: true,
-        scales: {
-          y: {
-            min: 15,
-            display: false,
-            ticks: {
-              stepSize: 2,
+    <div className="mt-8 px-6 py-4 rounded-xl backdrop-blur-md bg-[rgba(25,255,255,0.2)] border-2 border-[rgba(255,255,255,0.18)]">
+      <Line
+        data={data}
+        height={400}
+        width={960}
+        options={{
+          responsive: true,
+          scales: {
+            y: {
+              min: 20,
+              display: false,
+              ticks: {
+                stepSize: 2,
+              },
             },
-          }
-        },
-        plugins: {
-          datalabels: {
-            display: true,
-            align: 'top',
-            color: 'black',
-            
-          }
-        }
-      }}
-    ></Line>
+            x: {
+              ticks: {
+                color: 'black',
+              }
+            }
+          },
+          plugins: {
+            datalabels: {
+              display: true,
+              align: "top",
+              color: "black",
+            },
+          },
+        }}
+      ></Line>
+    </div>
   );
 };
 

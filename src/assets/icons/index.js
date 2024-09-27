@@ -5,8 +5,9 @@ import compass from './compass.svg';
 import setting from './setting.svg';
 import notification from './notification.svg'
 import user from './user.svg'
-import climate from './cloudy-day-1.svg'
+import climate from './static/cloudy-2-night.svg'
 import puneBg from '../images/pune.jpg'
+import weatherBg from '../images/weather.jpg'
 
 export {
     calender,
@@ -17,5 +18,6 @@ export {
     notification,
     user,
     climate,
-    puneBg
+    puneBg,
+    weatherBg
 }

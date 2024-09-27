@@ -10,18 +10,18 @@ const dayList = [
   "Saturday",
 ];
 const monthList = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
+  "January",
+  "February",
+  "March",
+  "April",
   "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const codeslist = [
@@ -62,8 +62,16 @@ const descriptions = [
 
 export const getDetails = (details: detailsInfo) => {
   const date = new Date()
-  const days = dayList.slice(date.getDay());
+
+  let currntDay = date.getDay();
+  const days: string[] = []
+  for(let i=0; i<4;i++) {
+    days[i] = dayList[currntDay];
+    currntDay = (currntDay+1)%7
+  }
+
   const month = monthList[date.getMonth()];
+
   let riseTime: string = "";
   let setTime: string = "";
   let hours = "0" + date.getHours().toString();
@@ -85,7 +93,24 @@ export const getDetails = (details: detailsInfo) => {
     setTime = setHour + ": " + setMinutes.substring(riseMinutes.length - 2);
   }
 
-  return { days, month, riseTime, setTime, hours, minutes, date };
+  function ordinal_suffix_of() {
+    let j = date.getDate() % 10,
+        k = date.getDate() % 100;
+    if (j === 1 && k !== 11) {
+        return date.getDate() + "st";
+    }
+    if (j === 2 && k !== 12) {
+        return date.getDate() + "nd";
+    }
+    if (j === 3 && k !== 13) {
+        return date.getDate() + "rd";
+    }
+    return date.getDate()  + "th";
+  }
+
+  const datestr = ordinal_suffix_of();
+
+  return { days, month, riseTime, setTime, hours, minutes, date, datestr };
 };
 
 export function weather(code: number): string {
