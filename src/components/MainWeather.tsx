@@ -7,7 +7,7 @@ const MainWeather = () => {
   const { days, month, hours, minutes, datestr } = getDetails(details);
   
   return (
-    <div className="flex rounded-xl backdrop-blur-md bg-[rgba(25,255,255,0.2)] border-2 border-[rgba(255,255,255,0.18)] justify-between px-6 py-4">
+    <div className="flex container justify-between px-6 py-4">
       <div className="">
         <h1 className="text-6xl">{details.weather?.name}</h1>
         <p>

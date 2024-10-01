@@ -12,12 +12,12 @@ const Content = () => {
 
   return (
     <div className="flex">
-      <div className="flex flex-col p-5 w-[1000px]">
+      <div className="flex flex-col gap-6 p-6 pr-3 w-[1000px]">
         <MainWeather />
         <Highlights />
         <LineGraph />
       </div>
-      <div className="flex-1 p-5">
+      <div className="flex-1 flex flex-col gap-6 p-6 pl-3">
         <BarGraph />
         <Forecast />
       </div>

@@ -16,7 +16,7 @@ function App() {
   const getPost = async () => {
     try {
       const weatherObj = await Axios.post(
-        "https://api.openweathermap.org/data/2.5/weather?lat=18.5204&lon=73.8567&units=metric&appid=601708278b44b430e193762b36b11037"
+        `https://api.openweathermap.org/data/2.5/weather?lat=18.5204&lon=73.8567&units=metric&appid=601708278b44b430e193762b36b11037`
       );
       const forecastObj = await Axios.get(
         "https://api.open-meteo.com/v1/forecast?latitude=18.5204&longitude=73.8567&current=precipitation&hourly=temperature_2m,precipitation_probability&timezone=auto&forecast_days=1"
@@ -41,17 +41,15 @@ function App() {
   useEffect(() => {
     getPost();
   }, []);
+  
 
-  console.log(weather);
-  console.log(forecast);
-  console.log(forecastDay);
   return (
     <Appcontext.Provider value={details}>
-      <div style={{backgroundImage: `url(${weatherBg})`}} className="flex">
+      <div style={{backgroundImage: `url(${weatherBg})`}} className=" bg-cover bg-right-bottom flex">
         <div className="hidden md:block">
           <Nav />
         </div>
-        <div className="flex-1 ">
+        <div className="flex-1">
           <TitleBar />
           <Content />
         </div>

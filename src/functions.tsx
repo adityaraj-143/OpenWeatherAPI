@@ -36,28 +36,28 @@ const descriptions = [
   "Overcast",
   "Fog",
   "Depositing rime fog",
-  "Drizzle: Light intensity",
-  "Drizzle: Moderate intensity",
-  "Drizzle: Dense intensity",
-  "Freezing Drizzle: Light intensity",
-  "Freezing Drizzle: Dense intensity",
-  "Rain: Slight intensity",
-  "Rain: Moderate intensity",
-  "Rain: Heavy intensity",
-  "Freezing Rain: Light intensity",
-  "Freezing Rain: Heavy intensity",
-  "Snow fall: Slight intensity",
-  "Snow fall: Moderate intensity",
-  "Snow fall: Heavy intensity",
+  "Light drizzle",
+  "Moderate drizzle",
+  "Dense drizzle",
+  "Drizzle drizzle",
+  "Freezing drizzle",
+  "Slight rain",
+  "Moderate rain",
+  "Heavy rain",
+  "Light freezing rain",
+  "Heavy freezing rain",
+  "Slight snow fall",
+  "Moderate snow fall",
+  "Heavy snow fall",
   "Snow grains",
-  "Rain showers: Slight intensity",
-  "Rain showers: Moderate intensity",
-  "Rain showers: Violent intensity",
-  "Snow showers: Slight intensity",
-  "Snow showers: Heavy intensity",
-  "Thunderstorm: Slight or moderate",
-  "Thunderstorm with slight hail",
-  "Thunderstorm with heavy hail",
+  "Slight rain showers",
+  "Moderate rain showers",
+  "Violent rain showers",
+  "Slight snow showers",
+  "Heavy snow showers",
+  "Slight thunderstorm",
+  "Slight hail thunderstorm",
+  "Heavy hail thunderstorm",
 ];
 
 export const getDetails = (details: detailsInfo) => {
@@ -65,7 +65,7 @@ export const getDetails = (details: detailsInfo) => {
 
   let currntDay = date.getDay();
   const days: string[] = []
-  for(let i=0; i<4;i++) {
+  for(let i=0; i<5;i++) {
     days[i] = dayList[currntDay];
     currntDay = (currntDay+1)%7
   }

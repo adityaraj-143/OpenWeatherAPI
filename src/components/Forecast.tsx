@@ -11,7 +11,7 @@ const Forecast = () => {
   const dailyforecast: dailyinfo[] = [];
 
   if (codes !== undefined && tempMax !== undefined && tempMin !== undefined) {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
       dailyforecast[i] = {
         day: days[i + 1],
         code: codes[i + 1],
@@ -22,17 +22,24 @@ const Forecast = () => {
   }
 
   return (
-    <div className="mt-24 flex flex-col gap-4 items-center">
-      <ul>
+    <div className="flex-1 flex flex-col items-center max-h-[454px] container px-6 py-4 ">
+      <h1 className="text-start">3 Days Forecast</h1>
+      <ul className="mt-6 flex flex-col gap-7">
         {dailyforecast.map((forecast, index) => (
-          <li className="bg-white w-[400px] my-12 py-2 flex justify-between items-center ">
-            <div className="text-center w-40">
-              <h2>{forecast.day}</h2>
-              <p>{weather(forecast.code)}</p>
-            </div>
-            <div className="flex justify-around gap-4 w-40">
-              <p className="w-56">&#8593; {forecast.tempMax}°</p>
-              <p className="w-56">&#8595; {forecast.tempMin}°</p>
+          <li key={index}>
+            <div className="bg-white w-[450px] py-2 flex justify-between items-center rounded-xl border-slate-400 border-2 ">
+              <div className="text-start pl-4 w-56">
+                <h2>{forecast.day}</h2>
+                <p>{weather(forecast.code)}</p>
+              </div>
+              <div className="flex justify-around gap-4 w-40">
+                <p className="w-56">
+                  &#8593; {forecast.tempMax}°<sup>C</sup>
+                </p>
+                <p className="w-56">
+                  &#8595; {forecast.tempMin}°<sup>C</sup>
+                </p>
+              </div>
             </div>
           </li>
         ))}

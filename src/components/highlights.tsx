@@ -5,9 +5,9 @@ const Highlights = () => {
   const details = useDetailsContext();
   const { riseTime, setTime } = getDetails(details);
   return (
-    <div className="mt-8 rounded-xl backdrop-blur-md bg-[rgba(25,255,255,0.1)] border-2 border-[rgba(255,255,255,0.18)] px-6 py-4">
-      <h2>Today's Highlight</h2>
-      <div className="flex gap-14">
+    <div className="container px-6 py-4">
+      <h2 className="text-center">Today's Highlight</h2>
+      <div className="flex px-auto mt-4 justify-center gap-14">
         <div className="bg-white w-32 h-20 rounded-xl border-slate-400 border-2">
           <small className="text-start px-2">Precipitation</small>
           <p className="text-center pt-3">

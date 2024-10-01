@@ -41,7 +41,8 @@ const BarGraph = () => {
   };
 
   return (
-    <div className=" px-6 py-4 h-[429px] rounded-xl backdrop-blur-md bg-[rgba(25,255,255,0.2)] border-2 border-[rgba(255,255,255,0.18)]">
+    <div className=" px-6 py-4 h-[430.283px] container">
+      <h1 className="text-center">Rain Chances</h1>
       <Bar data={data} options={{ indexAxis: "y" }}></Bar>
     </div>
   );

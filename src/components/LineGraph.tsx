@@ -7,6 +7,8 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
+  Filler,
+  Legend
 } from "chart.js";
 
 ChartJS.register(
@@ -14,7 +16,8 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  ChartDataLabels
+  ChartDataLabels,
+  Filler,
 );
 
 const LineGraph = () => {
@@ -45,16 +48,31 @@ const LineGraph = () => {
         data: linedata,
         fill: true,
         tension: 0.1,
-        pointRadius: 3,
-        fillColor: "rgba"
+        pointRadius: 5,
+        borderWidth: 4,
+        borderColor: "rgba(44, 103, 242,0.5)",
+        pointBorderWidth: 2,
+        pointBorderColor: "rgba(44, 103, 242,0.5)",
+        pointBackgroundColor: "#81c5f7",
+        backgroundColor: (context: any) => {
+          console.log(context.chart.chartArea)
+          const {ctx, data, chartArea: {top, bottom} } = context.chart
+          const gradientbg = ctx.createLinearGradient(0,top, 0, bottom)
+          gradientbg.addColorStop(0,"rgba(44, 103, 242, 0.5)")
+          gradientbg.addColorStop(1, "rgba(98, 207, 244, 0.3)")
+          return gradientbg;
 
+        }
       },
     ],
   };
 
+  
   return (
-    <div className="mt-8 px-6 py-4 rounded-xl backdrop-blur-md bg-[rgba(25,255,255,0.2)] border-2 border-[rgba(255,255,255,0.18)]">
-      <Line
+    <div className="px-6 py-4 container h-[454px]">
+      <h1 className="text-center">Temperature Graph (°C)</h1>
+      <Line 
+        className="mt-4"
         data={data}
         height={400}
         width={960}
@@ -62,13 +80,19 @@ const LineGraph = () => {
           responsive: true,
           scales: {
             y: {
+              grid: {
+                display: false
+              },
               min: 20,
               display: false,
               ticks: {
-                stepSize: 2,
+                stepSize: 4,
               },
             },
             x: {
+              grid: {
+                display: false
+              },
               ticks: {
                 color: 'black',
               }
