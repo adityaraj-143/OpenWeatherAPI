@@ -102,16 +102,6 @@ export interface ForecastInfo {
   timezone: string;
   timezone_abbreviation: string;
   elevation: number;
-  current_units: {
-    time: string;
-    interval: string;
-    precipitation: string;
-  }
-  current: {
-    time: string;
-    interval: number;
-    precipitation: number
-  }
   hourly_units: {
     time: string;
     temperature_2m: string;
@@ -122,7 +112,16 @@ export interface ForecastInfo {
     temperature_2m: number[];
     precipitation_probability: number[];
   };
+  daily_units: {
+    time: string;
+    precipitation_probability_mean: string;
+  };
+  daily: {
+    time: string[];
+    precipitation_probability_mean: number[];
+  };
 }
+
 
 export interface dailyinfo {
   day: string;
@@ -135,6 +134,11 @@ export interface detailsInfo {
   weather: WeatherInfo | undefined;
   forecast: ForecastInfo | undefined;
   forecastDay: forecastDayInfo | undefined;
+}
+
+export interface highlights {
+  name: string;
+  detail: string;
 }
 
 

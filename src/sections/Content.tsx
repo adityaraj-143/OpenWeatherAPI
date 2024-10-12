@@ -11,7 +11,7 @@ const Content = () => {
   const { days, month, hours, minutes, date } = getDetails(details);
 
   return (
-    <div className="flex">
+    <div className="flex border-t-2 border-l-2  border-[rgba(255,255,255,0.18)]">
       <div className="flex flex-col gap-6 p-6 pr-3 w-[1000px]">
         <MainWeather />
         <Highlights />

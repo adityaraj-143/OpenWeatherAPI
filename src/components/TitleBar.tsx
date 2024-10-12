@@ -3,7 +3,7 @@ import {titleMenu} from '../constants/index'
 const TitleBar = () => {
 
   return (
-    <div className="flex justify-between items-center min-h-14 flex-1 px-10 backdrop-blur-md bg-[rgba(25,255,255,0.25)]" >
+    <div className="flex justify-between items-center min-h-14 flex-1 px-10 backdrop-blur-3xl bg-[rgba(25,255,255,0.1)]" >
       <div>
         <h1 className="text-2xl" >Weather</h1>
       </div>

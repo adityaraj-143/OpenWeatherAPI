@@ -19,7 +19,7 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?lat=18.5204&lon=73.8567&units=metric&appid=601708278b44b430e193762b36b11037`
       );
       const forecastObj = await Axios.get(
-        "https://api.open-meteo.com/v1/forecast?latitude=18.5204&longitude=73.8567&current=precipitation&hourly=temperature_2m,precipitation_probability&timezone=auto&forecast_days=1"
+        "https://api.open-meteo.com/v1/forecast?latitude=18.5204&longitude=73.8567&daily=precipitation_probability_mean&hourly=temperature_2m,precipitation_probability&timezone=auto&forecast_days=1"
       );
       const forecastDay = await Axios.get(
         "https://api.open-meteo.com/v1/forecast?latitude=18.520&longitude=73.8567&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto"
@@ -45,7 +45,7 @@ function App() {
 
   return (
     <Appcontext.Provider value={details}>
-      <div style={{backgroundImage: `url(${weatherBg})`}} className=" bg-cover bg-right-bottom flex">
+      <div style={{backgroundImage: `url(${weatherBg})`}} className=" bg-cover bg-center flex">
         <div className="hidden md:block">
           <Nav />
         </div>

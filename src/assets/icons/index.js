@@ -7,7 +7,7 @@ import notification from './notification.svg'
 import user from './user.svg'
 import climate from './static/cloudy-2-night.svg'
 import puneBg from '../images/pune.jpg'
-import weatherBg from '../images/abc3.jpg'
+import weatherBg from '../images/abc9.jpg'
 
 export {
     calender,

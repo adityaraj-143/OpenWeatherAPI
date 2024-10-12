@@ -28,11 +28,11 @@ const Forecast = () => {
         {dailyforecast.map((forecast, index) => (
           <li key={index}>
             <div className="bg-white w-[450px] py-2 flex justify-between items-center rounded-xl border-slate-400 border-2 ">
-              <div className="text-start pl-4 w-56">
+              <div className="pl-4 w-56">
                 <h2>{forecast.day}</h2>
                 <p>{weather(forecast.code)}</p>
               </div>
-              <div className="flex justify-around gap-4 w-40">
+              <div className="flex pr-2 justify-around gap-4 w-40">
                 <p className="w-56">
                   &#8593; {forecast.tempMax}°<sup>C</sup>
                 </p>

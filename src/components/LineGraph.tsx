@@ -50,7 +50,7 @@ const LineGraph = () => {
         tension: 0.1,
         pointRadius: 5,
         borderWidth: 4,
-        borderColor: "rgba(44, 103, 242,0.5)",
+        borderColor: "rgba(126, 96, 191, 0.6)",
         pointBorderWidth: 2,
         pointBorderColor: "rgba(44, 103, 242,0.5)",
         pointBackgroundColor: "#81c5f7",
@@ -58,8 +58,8 @@ const LineGraph = () => {
           console.log(context.chart.chartArea)
           const {ctx, data, chartArea: {top, bottom} } = context.chart
           const gradientbg = ctx.createLinearGradient(0,top, 0, bottom)
-          gradientbg.addColorStop(0,"rgba(44, 103, 242, 0.5)")
-          gradientbg.addColorStop(1, "rgba(98, 207, 244, 0.3)")
+          gradientbg.addColorStop(0.1,"rgba(228, 177, 240, 0.6)")
+          gradientbg.addColorStop(1, "rgba(228, 177, 240, 0.3)")
           return gradientbg;
 
         }
