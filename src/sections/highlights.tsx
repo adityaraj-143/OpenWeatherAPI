@@ -38,7 +38,7 @@ const Highlights = () => {
         <ul className="flex justify-center gap-14 mt-4">
           {highlight.map((item, index) => (
             <li key={index}>
-              <div className="bg-white w-32 h-20 rounded-xl border-slate-400 border-2">
+              <div className="bg-lightblue w-32 h-20 rounded-xl border-2 border-darkblue">
                 <small className="text-start px-2">{item.name}</small>
                 <p className="text-center pt-3">
                   {item.detail}

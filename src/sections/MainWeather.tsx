@@ -1,10 +1,11 @@
-import { climateIcon } from "../constants";
 import { useDetailsContext } from "../context";
-import { getDetails, weather } from "../functions";
+import { getDetails, getWeatherDesc, getWeatherIcon} from "../functions";
 
 const MainWeather = () => {
   const details = useDetailsContext();
-  const { days, month, hours, minutes, datestr } = getDetails(details);
+  const { days, month, datestr } = getDetails(details);
+  const code = details.forecast?.current.weather_code;
+  console.log(code)
   
   return (
     <div className="flex container justify-between px-6 py-4">
@@ -13,15 +14,15 @@ const MainWeather = () => {
         <p>
           {days[0]}, {datestr} {month}
         </p>
-        <div>
+        <div className="">
           <img
-            src={climateIcon[0].imgUrl}
+            src={getWeatherIcon(code)}
             alt="climate"
-            width={220}
+            width={120}
             height={101}
-            className="-mb-14 -ml-10"
+            className="-mb-2 -ml-5 "
           />
-          <h1 className="pl-2 text-2xl">{details.weather?.weather[0].description}</h1>
+          <h1 className="text-2xl">{getWeatherDesc(code)}</h1>
         </div>
       </div>
       <div className="flex flex-col justify-center items-center">

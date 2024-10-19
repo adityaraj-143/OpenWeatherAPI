@@ -8,7 +8,6 @@ import {
   LinearScale,
   PointElement,
   Filler,
-  Legend
 } from "chart.js";
 
 ChartJS.register(
@@ -40,6 +39,10 @@ const LineGraph = () => {
       linedata[i] = details.forecast?.hourly.temperature_2m[i * 3];
   }
 
+  const minData = Math.min(...linedata);
+  const maxData = Math.max(...linedata);
+  const average = maxData - minData;
+
   const data = {
     labels: labels,
     datasets: [
@@ -49,17 +52,17 @@ const LineGraph = () => {
         fill: true,
         tension: 0.1,
         pointRadius: 5,
-        borderWidth: 4,
-        borderColor: "rgba(126, 96, 191, 0.6)",
+        borderWidth: 2,
+        borderColor: "rgba(8, 116, 175, 0.7)",
         pointBorderWidth: 2,
         pointBorderColor: "rgba(44, 103, 242,0.5)",
         pointBackgroundColor: "#81c5f7",
         backgroundColor: (context: any) => {
           console.log(context.chart.chartArea)
-          const {ctx, data, chartArea: {top, bottom} } = context.chart
+          const {ctx, chartArea: {top, bottom} } = context.chart
           const gradientbg = ctx.createLinearGradient(0,top, 0, bottom)
-          gradientbg.addColorStop(0.1,"rgba(228, 177, 240, 0.6)")
-          gradientbg.addColorStop(1, "rgba(228, 177, 240, 0.3)")
+          gradientbg.addColorStop(0.1, "rgba(63, 144, 189, 0.4)")
+          gradientbg.addColorStop(1,"rgba(224,244,255,0.6)")
           return gradientbg;
 
         }
@@ -69,10 +72,10 @@ const LineGraph = () => {
 
   
   return (
-    <div className="px-6 py-4 container h-[454px]">
+    <div className="px-6 py-4 h-[444px] container ">
       <h1 className="text-center">Temperature Graph (°C)</h1>
       <Line 
-        className="mt-4"
+        className="-mt-4"
         data={data}
         height={400}
         width={960}
@@ -83,10 +86,10 @@ const LineGraph = () => {
               grid: {
                 display: false
               },
-              min: 20,
+              min: minData-5,
               display: false,
               ticks: {
-                stepSize: 4,
+                stepSize: average,
               },
             },
             x: {

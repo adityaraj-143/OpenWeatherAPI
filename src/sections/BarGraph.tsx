@@ -40,8 +40,8 @@ const BarGraph = () => {
         borderRadius: 4,
         barPercentage: 1,
         categoryPercentage: 0.6,
-        backgroundColor: "rgba(228, 177, 240, 0.5)",
-        borderColor: "rgba(126, 96, 191, 0.5)"
+        backgroundColor: "rgba(224,244,255,0.6)",
+        borderColor: "rgba(8, 116, 175, 0.7)",
       },
     ],
   };
@@ -65,12 +65,13 @@ const BarGraph = () => {
   }
 
   return (
-    <div className=" px-6 py-4 h-[436.917px] container">
-      <h1 className="text-center">Rain Chances</h1>
+    <div className=" px-6 py-4 h-[426.85px] container">
+      <h1 className="text-center mt-2 ">Rain Chances</h1>
       <Bar 
-        height={200}
+        height={230}
         data={data} 
         options={{ 
+          responsive: true,
           indexAxis: "y",
           scales: {
             x: {
@@ -83,10 +84,13 @@ const BarGraph = () => {
               grid: {
                 display: false
               },
+              ticks: {
+                color: 'black'
+              },
               border: { 
                 display: false
               }
-            }
+            },
           },
           plugins: {
             datalabels: {

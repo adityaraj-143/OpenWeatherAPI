@@ -1,4 +1,5 @@
 import { detailsInfo } from "./constants";
+import { weatherConditions } from "./constants";
 
 const dayList = [
   "Sunday",
@@ -22,42 +23,6 @@ const monthList = [
   "October",
   "November",
   "December",
-];
-
-const codeslist = [
-  0, 1, 2, 3, 45, 48, 51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 71, 73, 75, 77,
-  80, 81, 82, 85, 86, 95, 96, 99,
-];
-
-const descriptions = [
-  "Clear sky",
-  "Mainly clear",
-  "Partly cloudy",
-  "Overcast",
-  "Fog",
-  "Depositing rime fog",
-  "Light drizzle",
-  "Moderate drizzle",
-  "Dense drizzle",
-  "Drizzle drizzle",
-  "Freezing drizzle",
-  "Slight rain",
-  "Moderate rain",
-  "Heavy rain",
-  "Light freezing rain",
-  "Heavy freezing rain",
-  "Slight snow fall",
-  "Moderate snow fall",
-  "Heavy snow fall",
-  "Snow grains",
-  "Slight rain showers",
-  "Moderate rain showers",
-  "Violent rain showers",
-  "Slight snow showers",
-  "Heavy snow showers",
-  "Slight thunderstorm",
-  "Slight hail thunderstorm",
-  "Heavy hail thunderstorm",
 ];
 
 export const getDetails = (details: detailsInfo) => {
@@ -86,11 +51,11 @@ export const getDetails = (details: detailsInfo) => {
     const sunrise = new Date(details.weather?.sys.sunrise * 1000);
     const sunset = new Date(details.weather?.sys.sunset * 1000);
     console.log(sunrise, sunset);
-    
+
     const riseHour = sunrise.getHours().toString();
     const riseMinutes = "0" + sunrise.getMinutes().toString();
     riseTime = riseHour + ": " + riseMinutes.substring(riseMinutes.length - 2);
-    const setHour = (sunset.getHours() % 12);
+    const setHour = sunset.getHours() % 12;
     const setMinutes = "0" + sunset.getMinutes().toString();
     setTime = setHour + ": " + setMinutes.substring(riseMinutes.length - 2);
   }
@@ -115,8 +80,22 @@ export const getDetails = (details: detailsInfo) => {
   return { days, month, riseTime, setTime, hours, minutes, date, datestr };
 };
 
-export function weather(code: number): string {
-  const index = codeslist.indexOf(code);
-  const weatherDesc = descriptions[index];
+export const getWeatherDesc = (code: number | undefined) => {
+  let weatherDesc;
+  weatherConditions.forEach((item) => {
+    if (item.code === code) {
+      weatherDesc = item.description;
+    }
+  });
   return weatherDesc;
-}
+};
+
+export const getWeatherIcon = (code: number | undefined) => {
+  let weatherIcon;
+  weatherConditions.forEach((item) => {
+    if (item.code === code) {
+      weatherIcon = item.icon;
+    }
+  });
+  return weatherIcon;
+};

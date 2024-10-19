@@ -1,5 +1,5 @@
 import { useDetailsContext } from "../context";
-import { getDetails, weather } from "../functions";
+import { getDetails, getWeatherDesc} from "../functions";
 import { dailyinfo } from "../constants/index";
 
 const Forecast = () => {
@@ -19,18 +19,18 @@ const Forecast = () => {
         tempMin: tempMin[i + 1],
       };
     }
-  }
+  } 
 
   return (
-    <div className="flex-1 flex flex-col items-center max-h-[454px] container px-6 py-4 ">
-      <h1 className="text-start">3 Days Forecast</h1>
+    <div className="flex-1 flex flex-col items-center h-[444px] container px-6 py-4 ">
+      <h1 className="text-start">4 Days Forecast</h1>
       <ul className="mt-6 flex flex-col gap-7">
         {dailyforecast.map((forecast, index) => (
           <li key={index}>
-            <div className="bg-white w-[450px] py-2 flex justify-between items-center rounded-xl border-slate-400 border-2 ">
+            <div className="bg-lightblue w-[450px] py-2 flex justify-between items-center rounded-xl border-darkblue border-2">
               <div className="pl-4 w-56">
                 <h2>{forecast.day}</h2>
-                <p>{weather(forecast.code)}</p>
+                <p>{getWeatherDesc(forecast.code)}</p>
               </div>
               <div className="flex pr-2 justify-around gap-4 w-40">
                 <p className="w-56">

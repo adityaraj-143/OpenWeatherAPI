@@ -1,52 +1,208 @@
-import {home, calender, location, compass, setting, notification, user, climate, puneBg} from '../assets/icons/index';
-
+import {
+  home,
+  calender,
+  location,
+  compass,
+  setting,
+  notification,
+  user,
+  climate,
+} from "../assets/icons/index";
 
 export const navMenu = [
-    {
-        imgurl: home,
-        text: "Home" 
-    },
-    {
-        imgurl: compass,
-        text: "Forecast" 
-    },
-    {
-        imgurl: location,
-        text: "Locations" 
-    },
-    {
-        imgurl: calender,
-        text: "Calender" 
-    },
-    {
-        imgurl: setting,
-        text: "Settings" 
-    }
-]
+  {
+    imgurl: home,
+    text: "Home",
+    alt: "home",
+    href: "home"
+  },
+  {
+    imgurl: compass,
+    text: "Forecast",
+    alt: "forcast",
+    href: "forecast"
+  },
+  {
+    imgurl: location,
+    text: "Locations",
+    alt: "locations",
+    href: "locations"
+  },
+  {
+    imgurl: calender,
+    text: "Calender",
+    alt: "calender",
+    href: "calender"
+  },
+  {
+    imgurl: setting,
+    text: "Settings",
+    alt: "settings",
+    href: "settings"
+  },
+];
 
+export const weatherConditions = [
+  {
+    code: 0,
+    description: "Clear sky",
+    icon: climate.clearSky,
+  },
+  {
+    code: 1,
+    description: "Mainly clear",
+    icon: climate.slightCloudy,
+  },
+  {
+    code: 2,
+    description: "Partly cloudy",
+    icon: climate.mediumCloudy,
+  },
+  {
+    code: 3,
+    description: "Overcast",
+    icon: climate.overcast,
+  },
+  {
+    code: 45,
+    description: "Fog",
+    icon: climate.fog,
+  },
+  {
+    code: 48,
+    description: "Depositing rime fog",
+    icon: climate.frost,
+  },
+  {
+    code: 51,
+    description: "Light drizzle",
+    icon: climate.drizzle,
+  },
+  {
+    code: 53,
+    description: "Moderate drizzle",
+    icon: climate.drizzle,
+  },
+  {
+    code: 55,
+    description: "Dense drizzle",
+    icon: climate.drizzle,
+  },
+  {
+    code: 56,
+    description: "Slight freezing drizzle",
+    icon: climate.freezingDrizzle,
+  },
+  {
+    code: 57,
+    description: "Heavy freezing drizzle",
+    icon: climate.freezingDrizzle,
+  },
+  {
+    code: 61,
+    description: "Slight rain",
+    icon: climate.slightRain,
+  },
+  {
+    code: 63,
+    description: "Moderate rain",
+    icon: climate.heavyRain,
+  },
+  {
+    code: 65,
+    description: "Heavy rain",
+    icon: climate.heavyRain,
+  },
+  {
+    code: 66,
+    description: "Light freezing rain",
+    icon: climate.freezingRain,
+  },
+  {
+    code: 67,
+    description: "Heavy freezing rain",
+    icon: climate.freezingRain,
+  },
+  {
+    code: 71,
+    description: "Slight snow fall",
+    icon: climate.slightSnow,
+  },
+  {
+    code: 73,
+    description: "Moderate snow fall",
+    icon: climate.mediumSnow,
+  },
+  {
+    code: 75,
+    description: "Heavy snow fall",
+    icon: climate.heavySnow,
+  },
+  {
+    code: 77,
+    description: "Snow grains",
+    icon: climate.snowGrains,
+  },
+  {
+    code: 80,
+    description: "Slight rain showers",
+    icon: climate.slightRainShower,
+  },
+  {
+    code: 81,
+    description: "Moderate rain showers",
+    icon: climate.mediumRainShower,
+  },
+  {
+    code: 82,
+    description: "Violent rain showers",
+    icon: climate.heavyRainShower,
+  },
+  {
+    code: 85,
+    description: "Slight snow showers",
+    icon: climate.slightSnowShower,
+  },
+  {
+    code: 86,
+    description: "Heavy snow showers",
+    icon: climate.heavySnowShower,
+  },
+  {
+    code: 95,
+    description: "Slight thunderstorm",
+    icon: climate.slightThunderstorm,
+  },
+  {
+    code: 96,
+    description: "Slight hail thunderstorm",
+    icon: climate.thunderstorm,
+  },
+  {
+    code: 99,
+    description: "Heavy hail thunderstorm",
+    icon: climate.thunderstorm,
+  },
+];
 
 export const titleMenu = [
-    {
-        imgurl: notification,
-        href: "#notifications"
-    },
-    {
-        imgurl: user,
-        href: "account"
-    }
-]
+  {
+    imgurl: notification,
+    href: "#notifications",
+    alt: "notification"
+  },
+  {
+    imgurl: user,
+    href: "account",
+    alt: "acco"
+  },
+];
 
 export const climateIcon = [
   {
     imgUrl: climate,
   },
-]
-
-export const bgImg = [
-  {
-    imgUrl: puneBg,
-  }
-]
+];
 
 export interface WeatherInfo {
   coord: {
@@ -93,7 +249,6 @@ export interface WeatherInfo {
   cod: number;
 }
 
-
 export interface ForecastInfo {
   latitude: number;
   longitude: number;
@@ -102,6 +257,16 @@ export interface ForecastInfo {
   timezone: string;
   timezone_abbreviation: string;
   elevation: number;
+  current_units: {
+    time: string;
+    interval: string;
+    weather_code: string;
+  };
+  current: {
+    time: string;
+    interval: number;
+    weather_code: number;
+  };
   hourly_units: {
     time: string;
     temperature_2m: string;
@@ -140,7 +305,6 @@ export interface highlights {
   name: string;
   detail: string;
 }
-
 
 export interface forecastDayInfo {
   latitude: number;

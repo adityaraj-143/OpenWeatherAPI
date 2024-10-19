@@ -15,6 +15,6 @@ html {
 
 @layer components {
     .container {
-        @apply rounded-xl backdrop-blur-md bg-[rgba(25,255,255,0.25)] border-2 border-[rgba(255,255,255,0.18)] shadow-xl
+        @apply rounded-xl backdrop-blur-md bg-[rgba(38,195,195,0.55)] border-2 border-[rgba(255,255,255,0.18)] shadow-xl
     }
 }
