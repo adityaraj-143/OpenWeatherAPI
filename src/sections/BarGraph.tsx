@@ -58,8 +58,9 @@ const BarGraph = () => {
 
   if(count === 0) {
     return (
-      <div className="flex justify-center align-center px-6 py-4 h-[436.917px] container">
-        <h1>No Rain Chances Today!</h1>
+      <div className="flex flex-col items-center justify-center h-[426.917px] container">
+        <h1 className="text-9xl mb-4">0%</h1>
+        <h2 className="text-2xl">Rain chances Today</h2>
       </div>
     )
   }
@@ -75,7 +76,7 @@ const BarGraph = () => {
           indexAxis: "y",
           scales: {
             x: {
-              grid: {
+              grid: { 
                 display: false
               },
               display: false

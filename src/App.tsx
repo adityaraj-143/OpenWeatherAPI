@@ -27,7 +27,11 @@ function App() {
       );
       const forecastDay = await Axios.get(
         "https://api.open-meteo.com/v1/forecast?latitude=18.520&longitude=73.8567&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto"
-      );
+      );  
+
+      
+
+
       setweather(weatherObj.data);
       setforecast(forecastObj.data);
       setforecastDay(forecastDay.data);
